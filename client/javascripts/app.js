@@ -113,7 +113,12 @@ var main = function (toDoObjects) {
     // delete 
 
     $("li").on("click", function() {
-        $(this).attr("class",'delete');
+        if($(this).hasClass('delete')){
+            $(this).removeClass('delete');
+            $(this).css("color", "black");
+        } else {
+            $(this).addClass('delete').css("color","red");
+        }
     });
 
     $("button").on("click", function() {
