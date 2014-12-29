@@ -26,11 +26,43 @@ var main = function (toDoObjects) {
                     $content.append($("<li>").text(toDos[i]));
                 }
 
+                $("main .content").append($content);
+                $("li").on("click", function() {
+                if($(this).hasClass('delete')){
+                    $(this).removeClass('delete');
+                    $(this).css("color", "black");
+                } else {
+                    $(this).addClass('delete').css("color","red");
+                }
+    });
+
+                $button = $("<button>").attr("id","delete").text("Удалить задачи");
+            $("main .content").append($button);
+
+            $("button").on("click", function() {
+        
+        var mass = $(".content li"),
+        massText = [];
+
+        mass.toArray().forEach(function(el){
+            massText.push(el.textContent);
+        });
+
+        var deleteElement = $(".delete");
+        var index = massText.indexOf(deleteElement.text());
+        /*console.log(deleteElement.text());
+        console.log(massText);
+        console.log(index);*/
+        delete toDos[index];
+        $(".delete").remove();
+    });
+
             } else if ($element.parent().is(":nth-child(2)")) {
                 $content = $("<ul>");
                 toDos.forEach(function (todo) {
                     $content.append($("<li>").text(todo));
                 });
+                $("main .content").append($content);
 
             } else if ($element.parent().is(":nth-child(3)")) {
                 var tags = [];
@@ -69,6 +101,7 @@ var main = function (toDoObjects) {
                     $("main .content").append($tagName);
                     $("main .content").append($content);
                 });
+                $("main .content").append($content);
             } else if ($element.parent().is(":nth-child(4)")) {
                 var $input = $("<input>").addClass("description"),
                     $inputLabel = $("<p>").text("Description: "),
@@ -99,11 +132,11 @@ var main = function (toDoObjects) {
                                      .append($tagLabel)
                                      .append($tagInput)
                                      .append($button);
+                                     $("main .content").append($content);
             }
 
-            $("main .content").append($content);
-            $button = $("<button>").attr("id","delete").text("Удалить задачи");
-            $("main .content").append($button);
+            
+            
             return false;
         });
     });
@@ -112,32 +145,8 @@ var main = function (toDoObjects) {
 
     // delete 
 
-    $("li").on("click", function() {
-        if($(this).hasClass('delete')){
-            $(this).removeClass('delete');
-            $(this).css("color", "black");
-        } else {
-            $(this).addClass('delete').css("color","red");
-        }
-    });
 
-    $("button").on("click", function() {
-        
-        var mass = $(".content li"),
-        massText = [];
-
-        mass.toArray().forEach(function(el){
-            massText.push(el.textContent);
-        });
-
-        var deleteElement = $(".delete");
-        var index = massText.indexOf(deleteElement.text());
-        /*console.log(deleteElement.text());
-        console.log(massText);
-        console.log(index);*/
-        delete toDos[index];
-        $(".delete").remove();
-    })
+    
 };
 
 $(document).ready(function () {
