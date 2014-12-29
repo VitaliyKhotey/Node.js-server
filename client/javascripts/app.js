@@ -128,10 +128,10 @@ var main = function (toDoObjects) {
 
         var deleteElement = $("#delete");
         var index = massText.indexOf(deleteElement.text());
-        console.log(deleteElement.text());
+        /*console.log(deleteElement.text());
         console.log(massText);
         console.log(index);
-        delete toDos[index];
+        delete toDos[index];*/
         $("#delete").remove();
     })
 };
