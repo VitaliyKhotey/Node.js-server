@@ -48,7 +48,7 @@ app.post("/todos", function (req, res) {
 */
      db.open(function(err, db) {
         var collection = db.collection("todo");
-        collection.insert({description:req.body.description, tags:req.body.tags.toArray()});
+        collection.insert({description:req.body.description, tags:req.body.tags});
         db.close();
     }); 
 
