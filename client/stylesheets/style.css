@@ -34,7 +34,7 @@ h1 {
 
 header nav {
   float: right;
-  width: 285px;
+  width: 400px;
 }
 
 a {
@@ -47,6 +47,8 @@ main {
     background: #fff;
     border-radius: 0 5px 5px 5px;;
     padding: 40px;
+    clear: both;
+    height: 400px;
 }
 
 .tabs a span {
@@ -71,6 +73,7 @@ main .content {
 
 h3 {
     font-family: 'Ubuntu', sans-serif;
+    width: 200px;
     border-radius: 5px;
     color: #999;;
     background: #ddd;
@@ -80,6 +83,11 @@ h3 {
 
 h3:first-child {
     margin-top: 0;
+}
+
+main .content {
+  width: 500px;
+  float: left;
 }
 
 main .content li {
@@ -111,8 +119,6 @@ main .content p:first-child {
 main .content input {
     font-size: 1.5em;
 }
-
-
 
 footer {
     border-top: 1px solid #ddd;
@@ -154,4 +160,8 @@ footer .sitemap .left {
 
 footer .sitemap .right {
     float: right;
+}
+
+img {
+  float: right;
 }

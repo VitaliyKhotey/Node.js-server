@@ -20,10 +20,12 @@ var main = function (toDoObjects) {
             $("main .content").empty();
 
             if ($element.parent().is(":nth-child(1)")) {
+
                 $content = $("<ul>");
                 for (var i = toDos.length-1; i >= 0; i--) {
                     $content.append($("<li>").text(toDos[i]));
                 }
+
             } else if ($element.parent().is(":nth-child(2)")) {
                 $content = $("<ul>");
                 toDos.forEach(function (todo) {
@@ -100,12 +102,38 @@ var main = function (toDoObjects) {
             }
 
             $("main .content").append($content);
+            $button = $("<button>").text("Удалить задачи");
+            $("main .content").append($button);
 
             return false;
         });
     });
 
     $(".tabs a:first-child span").trigger("click");
+
+    // delete 
+
+    $("li").on("click", function() {
+        $(this).attr("id",'delete');
+    });
+
+    $("button").on("click", function() {
+        
+        var mass = $(".content li"),
+        massText = [];
+
+        mass.toArray().forEach(function(el){
+            massText.push(el.textContent);
+        });
+
+        var deleteElement = $("#delete");
+        var index = massText.indexOf(deleteElement.text());
+        console.log(deleteElement.text());
+        console.log(massText);
+        console.log(index);
+        delete toDos[index];
+        $("#delete").remove();
+    })
 };
 
 $(document).ready(function () {
