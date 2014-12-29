@@ -102,9 +102,8 @@ var main = function (toDoObjects) {
             }
 
             $("main .content").append($content);
-            $button = $("<button>").text("Удалить задачи");
+            $button = $("<button>").attr("id","delete").text("Удалить задачи");
             $("main .content").append($button);
-
             return false;
         });
     });
@@ -114,7 +113,7 @@ var main = function (toDoObjects) {
     // delete 
 
     $("li").on("click", function() {
-        $(this).attr("id",'delete');
+        $(this).attr("class",'delete');
     });
 
     $("button").on("click", function() {
@@ -126,13 +125,13 @@ var main = function (toDoObjects) {
             massText.push(el.textContent);
         });
 
-        var deleteElement = $("#delete");
+        var deleteElement = $(".delete");
         var index = massText.indexOf(deleteElement.text());
         /*console.log(deleteElement.text());
         console.log(massText);
-        console.log(index);
-        delete toDos[index];*/
-        $("#delete").remove();
+        console.log(index);*/
+        delete toDos[index];
+        $(".delete").remove();
     })
 };
 
