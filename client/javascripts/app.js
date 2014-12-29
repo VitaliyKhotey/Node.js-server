@@ -36,7 +36,7 @@ var main = function (toDoObjects) {
                 }
     });
 
-                $button = $("<button>").attr("id","delete").text("Удалить задачи");
+            $button = $("<button>").attr("id","delete").text("Удалить задачи");
             $("main .content").append($button);
 
             $("button").on("click", function() {
@@ -49,12 +49,15 @@ var main = function (toDoObjects) {
         });
 
         var deleteElement = $(".delete");
-        var index = massText.indexOf(deleteElement.text());
+        var index = toDos.indexOf(deleteElement.text());
         /*console.log(deleteElement.text());
         console.log(massText);
         console.log(index);*/
+        console.log("Массив до удаления: "+toDos);
         delete toDos[index];
         $(".delete").remove();
+
+        console.log("Массив после удаления: "+toDos);
     });
 
             } else if ($element.parent().is(":nth-child(2)")) {

@@ -46,11 +46,11 @@ app.post("/todos", function (req, res) {
 
     toDos.push(newToDo);
 */
-     db.open(function(err, db) {
+    /* db.open(function(err, db) {
         var collection = db.collection("todo");
         collection.insert({description:req.body.description, tags:req.body.tags});
         db.close();
-    }); 
+    }); */
 
   /*  collection.findOne(function(err, item) {
         console.log(item);
